@@ -8,13 +8,47 @@ body{
     color: darkgreen;
 }
 
+#option1 {
+    padding-right: 10px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkgreen;
+}
+
 #dis{
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.update {
-    background-color: darkseagreen;
+#sequencer {
+    display: grid;
+    grid-template-columns: repeat(17, auto);
+    gap: 5px;
 }
+.step {
+    width: 30px;
+    height: 30px;
+}
+.label {
+    padding-right: 10px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: darkgreen;
+}
+
+#start {
+    background-color: greenyellow;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+#stop {
+    background-color: red;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
 
