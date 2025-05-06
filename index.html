@@ -142,21 +142,40 @@ document.getElementById('stop').addEventListener('click', function() {
 });
 
 function playStep() {
+
+    
+
     if (baseSteps[currentStep].checked) {
         baseSound.currentTime = 0;
         baseSound.play();
+        document.body.classList.add('flash1');
+    setTimeout(() => {
+        document.body.classList.remove('flash1');
+    }, 100);
     }
     if (drumSteps[currentStep].checked) {
         drumSound.currentTime = 0;
         drumSound.play();
+        document.body.classList.add('flash2');
+    setTimeout(() => {
+        document.body.classList.remove('flash2');
+    }, 100);
     }
     if (clapSteps[currentStep].checked) {
         clapSound.currentTime = 0;
         clapSound.play();
+        document.body.classList.add('flash3');
+    setTimeout(() => {
+        document.body.classList.remove('flash3');
+    }, 100);
     }
     if (bellSteps[currentStep].checked) {
         bellSound.currentTime = 0;
         bellSound.play();
+        document.body.classList.add('flash4');
+    setTimeout(() => {
+        document.body.classList.remove('flash4');
+    }, 100);
     }
 
     currentStep++;
