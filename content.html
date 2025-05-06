@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Step Sequencer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="head">
+
+<h1>Sheshe's Step Sequencer</h1>
+<h4>Click squares to activate steps</h4>
+    </div>
+
+    <div id="option1">
+        <h5>What is your desired BPM? (Beats Per Minute)</h5>
+        <input type="number" id="bpm" name="bpm"/>
+    </div>
+</br>
+</br>
+<div id="controls">
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</div>
+</br>
+<div id="sequencer">
+    <div class="label">Kick</div>
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+    <input type="checkbox" class="step base">
+
+    <div class="label">Snare</div>
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+    <input type="checkbox" class="step drum">
+
+    <div class="label">Clap</div>
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+    <input type="checkbox" class="step clap">
+
+    <div class="label">Cymbal</div>
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+    <input type="checkbox" class="step bell">
+</div>
+
+<audio id="baseaudio" src="ScreenRecording_03-17-2025 20-48-06_1.mp3" preload="auto"></audio>
+<audio id="drumaudio" src="ScreenRecording_03-17-2025 20-48-18_1.mp3" preload="auto"></audio>
+<audio id="clapaudio" src="ScreenRecording_03-17-2025 20-48-28_1.mp3" preload="auto"></audio>
+<audio id="bellaudio" src="ScreenRecording_03-17-2025 20-48-39_1.mp3" preload="auto"></audio>
+
+<script>
+let currentStep = 0;
+let interval = null;
+
+const baseSteps = document.querySelectorAll('.base');
+const drumSteps = document.querySelectorAll('.drum');
+const clapSteps = document.querySelectorAll('.clap');
+const bellSteps = document.querySelectorAll('.bell');
+
+const baseSound = document.getElementById('baseaudio');
+const drumSound = document.getElementById('drumaudio');
+const clapSound = document.getElementById('clapaudio');
+const bellSound = document.getElementById('bellaudio');
+
+document.getElementById('start').addEventListener('click', function() {
+    if (interval) return;
+
+    let bpmInput = document.getElementById('bpm').value;
+    let bpm = parseInt(bpmInput);
+
+    if (isNaN(bpm) || bpm <= 0) {
+        bpm = 120;
+    }
+
+    let intervalTime = (60 / bpm) * 1000 / 4; 
+    interval = setInterval(playStep, intervalTime);
+});
+
+
+document.getElementById('stop').addEventListener('click', function() {
+    clearInterval(interval);
+    interval = null;
+});
+
+function playStep() {
+
+    
+
+    if (baseSteps[currentStep].checked) {
+        baseSound.currentTime = 0;
+        baseSound.play();
+        document.body.classList.add('flash1');
+    setTimeout(() => {
+        document.body.classList.remove('flash1');
+    }, 100);
+    }
+    if (drumSteps[currentStep].checked) {
+        drumSound.currentTime = 0;
+        drumSound.play();
+        document.body.classList.add('flash2');
+    setTimeout(() => {
+        document.body.classList.remove('flash2');
+    }, 100);
+    }
+    if (clapSteps[currentStep].checked) {
+        clapSound.currentTime = 0;
+        clapSound.play();
+        document.body.classList.add('flash3');
+    setTimeout(() => {
+        document.body.classList.remove('flash3');
+    }, 100);
+    }
+    if (bellSteps[currentStep].checked) {
+        bellSound.currentTime = 0;
+        bellSound.play();
+        document.body.classList.add('flash4');
+    setTimeout(() => {
+        document.body.classList.remove('flash4');
+    }, 100);
+    }
+
+    currentStep++;
+    if (currentStep >= 16) {
+        currentStep = 0;
+    }
+}
+</script>
+
+</body>
+</html>
