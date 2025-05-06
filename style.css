@@ -1,5 +1,22 @@
+body.flash1 {
+    background-color: yellow;
+}
+
+body.flash2 {
+    background-color: cyan;
+}
+
+body.flash3 {
+    background-color: magenta
+}
+
+body.flash4 {
+    background-color: orange;
+}
+
 body{
     background-color: pink;
+    transition: background-color 0.1s ease;
 }
 
 #head{
