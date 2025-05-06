@@ -22,6 +22,7 @@
 <div id="controls">
     <button id="start">Start</button>
     <button id="stop">Stop</button>
+    <button id="clear">Reset</button>
 </div>
 </br>
 <div id="sequencer">
@@ -135,6 +136,14 @@ document.getElementById('start').addEventListener('click', function() {
 document.getElementById('stop').addEventListener('click', function() {
     clearInterval(interval);
     interval = null;
+});
+
+
+document.getElementById('clear').addEventListener('click', function() {
+    const allSteps = document.querySelectorAll('.step');
+    allSteps.forEach(step => {
+        step.checked = false;
+    });
 });
 
 function playStep() {
