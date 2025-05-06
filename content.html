@@ -8,23 +8,26 @@
 </head>
 <body>
 <div id="head">
-
-<h1>Sheshe's Step Sequencer</h1>
-<h4>Click squares to activate steps</h4>
-    </div>
+        <h1>Sheshe's Step Sequencer</h1>
+        <h4>Click squares to activate steps</h4>
+</div>
 
     <div id="option1">
         <h5>What is your desired BPM? (Beats Per Minute)</h5>
         <input type="number" id="bpm" name="bpm"/>
     </div>
+
 </br>
 </br>
+
 <div id="controls">
     <button id="start">Start</button>
     <button id="stop">Stop</button>
     <button id="clear">Reset</button>
 </div>
+
 </br>
+
 <div id="sequencer">
     <div class="label">Kick</div>
     <input type="checkbox" class="step base">
@@ -148,8 +151,6 @@ document.getElementById('clear').addEventListener('click', function() {
 
 function playStep() {
 
-    
-
     if (baseSteps[currentStep].checked) {
         baseSound.currentTime = 0;
         baseSound.play();
@@ -189,6 +190,5 @@ function playStep() {
     }
 }
 </script>
-
 </body>
 </html>
